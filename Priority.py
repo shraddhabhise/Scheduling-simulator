@@ -3,11 +3,7 @@ from collections import deque
 import random
 
 class Priority:
-    wait_list = []
-    com_list = []
-    turn_list = []
-    completion = 0
-    time_slice = 5
+
     queue = deque()
 
     def sort_job(jobList):
@@ -42,14 +38,14 @@ class Priority:
 
 
     def calculate_times(queue, num_jobs):
+
         completionTime = 0
         remaining_slice = 0
         cpu_slice = 5
-
         while len(Priority.queue) > 0:
             running = queue.pop()
             print("JobId, Exec time, Priority", running.JobId, running.execution_time, running.priority)
-            Job.set_WaitingTime(running, completionTime)
+            Job.set_waiting_time(running, completionTime)
             job_burst = Job.get_execution_time(running)
             while job_burst > 0:
                 job_burst = job_burst - cpu_slice
@@ -60,8 +56,8 @@ class Priority:
 
                 else:
                     completionTime = completionTime + cpu_slice
-            Job.set_Completion_Time(running, completionTime)
-            Job.set_turnaround_Time(running, Job.get_Completion_Time(running))
+            Job.set_completion_time(running, completionTime)
+            Job.set_turnaround_time(running, Job.get_completion_time(running))
 
             print("completion time", running.completion_time)
             print("turnaround time", running.turnaroundTime)
