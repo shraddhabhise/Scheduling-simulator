@@ -1,6 +1,6 @@
 from Jobs import Job
 from collections import deque
-import random
+
 
 class Priority:
 
@@ -8,23 +8,17 @@ class Priority:
 
     def sort_job(jobList):
 
-        for i in range(0, (len(jobList)-1)):
-            for j in range(0, (len(jobList)-i -1)):
-                if int(jobList[j].priority) > int(jobList[j+1].priority):
-                    temp = jobList[j]
-                    jobList[j] = jobList[j+1]
-                    jobList[j+1] = temp
+        """ Sort the job list based on arrival time
+        :param job_list:Job
+        :return:
+        """
+        sorted_job_list = sorted(jobList, key=lambda x: x.priority, reverse=False)
+        print("Sorted List: ")
+        for x in range(0, len(sorted_job_list)):
+            print("job id, arrival time, execution time", int(sorted_job_list[x].JobId),
+                  int(sorted_job_list[x].priority), int(sorted_job_list[x].execution_time))
+        return sorted_job_list
 
-        return jobList
-
-    def create_Jobs(num_jobs):
-        job_list = []
-
-        for x in range(num_jobs):
-            exec_time = random.randint(1, 10)
-            priority = random.randint(1, 5)
-            job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority))
-        return job_list
 
     def convert_to_queue(sortedList):
         """
@@ -59,29 +53,13 @@ class Priority:
             Job.set_completion_time(running, completionTime)
             Job.set_turnaround_time(running, Job.get_completion_time(running))
 
-            print("completion time", running.completion_time)
-            print("turnaround time", running.turnaroundTime)
-            print("waiting ", running.waiting_time)
+            print("Completion time", running.completion_time)
+            print("Turnaround time", running.turnaroundTime)
+            print("Waiting ", running.waiting_time)
         throughput = completionTime / num_jobs
-        print("completion time, num_jobs, Throughput ", completionTime, num_jobs, throughput)
+        print(" Throughput ", completionTime, num_jobs, throughput)
         total_TurnarounTime = completionTime / num_jobs
         print("Average Turn around time ", total_TurnarounTime)
-
-def main():
-    print("Starting Simulator")
-    num_jobs= 3
-    jobList = Priority.create_Jobs(num_jobs)
-    sortedList = Priority.sort_job(jobList)
-
-    print("Sorted List: ")
-    for x in range(0, len(sortedList)):
-        print("Priority, execution time",int(sortedList[x].priority), int(sortedList[x].execution_time))
-
-    queue =Priority.convert_to_queue(sortedList)
-    Priority.calculate_times(queue, num_jobs)
-
-if __name__ == "__main__":
-    main()
 
 
 
