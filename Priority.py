@@ -31,11 +31,10 @@ class Priority:
         return Priority.queue
 
 
-    def calculate_times(queue, num_jobs):
+    def calculate_times(queue, num_jobs, cpu_slice):
 
         completionTime = 0
         remaining_slice = 0
-        cpu_slice = 5
         while len(Priority.queue) > 0:
             running = queue.pop()
             print("JobId, Exec time, Priority", running.JobId, running.execution_time, running.priority)
@@ -60,6 +59,11 @@ class Priority:
         print(" Throughput ", completionTime, num_jobs, throughput)
         total_TurnarounTime = completionTime / num_jobs
         print("Average Turn around time ", total_TurnarounTime)
+
+    def execute_priority(num_of_jobs,cpu_slice,job_List):
+        sorted_job_list = Priority.sort_job(job_List)
+        queue = Priority.convert_to_queue(sorted_job_list)
+        Priority.calculate_times(queue, num_of_jobs, cpu_slice)
 
 
 
