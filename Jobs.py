@@ -60,7 +60,14 @@ class Job:
     def get_job_id(self):
         return self.JobId
 
+    def create_Jobs(num_jobs):
+        job_list = []
 
+        for x in range(num_jobs):
+            exec_time = random.randint(1, 10)
+            priority = random.randint(1, 5)
+            job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority))
+        return job_list
 
 
 
