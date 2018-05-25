@@ -45,7 +45,7 @@ class Fcfs:
             first_job.set_waiting_time(0)
             previous_job = first_job
             print("job id, arrival time, execution time, waiting time", int(first_job.JobId), int(first_job.arrival_time),
-              int(first_job.execution_time), int(first_job.waiting_time))
+                int(first_job.execution_time), int(first_job.waiting_time))
 
         while len(self.queue) > 0:
             running = self.queue.popleft()
@@ -54,7 +54,7 @@ class Fcfs:
                 wait_time = 0
             else:
                 wait_time = abs(wait_time)
-                running.set_waiting_time(wait_time)
+            running.set_waiting_time(wait_time)
 
             print("job id, arrival time, execution time, waiting time", int(running.JobId), int(running.arrival_time),int(running.execution_time), int(running.get_waiting_time()))
             previous_job = running
