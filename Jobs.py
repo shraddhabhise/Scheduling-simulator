@@ -1,10 +1,10 @@
 import random
 class Job:
 
-    def __init__(self, job_id, execution_time, priority, status="CREATED"):
+    def __init__(self, job_id, execution_time, priority, arrival_time, status="CREATED"):
         self.status = status
         self.waiting_time = None
-        self.arrival_time = None
+        self.arrival_time = arrival_time
         self.completion_time = None
         self.execution_time = execution_time  #Time required by the job to execute.
         self.JobId = job_id
@@ -66,7 +66,8 @@ class Job:
         for x in range(num_jobs):
             exec_time = random.randint(1, 10)
             priority = random.randint(1, 5)
-            job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority))
+            arrival_time = random.randint(1, 40)
+            job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority, arrival_time = arrival_time))
         return job_list
 
 
