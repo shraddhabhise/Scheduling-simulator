@@ -163,4 +163,6 @@ class Fcfs:
             fcfs.calculate_wait_time_different_arrival()
 
         fcfs.calculate_turn_around_time()
+        print("Throughput: ",fcfs.completion_time/num_of_jobs)
+
         return fcfs.completed_job_list
