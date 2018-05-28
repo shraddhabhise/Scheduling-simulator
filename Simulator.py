@@ -20,7 +20,7 @@ class Simulator:
             Simulator.fcfs_job_list = fcfs.execute_fcfs(num_of_jobs,cpu_slice,job_List )
 
         elif algorithm_to_execute == "Priority":
-            priority.execute_priority(num_of_jobs,cpu_slice,job_List)
+            Simulator.priority_job_list= priority.execute_priority(num_of_jobs,cpu_slice,job_List)
 
     def main():
         print("Starting Simulator")
@@ -30,7 +30,10 @@ class Simulator:
 
         #Create required number of Jobs for scheduling using Jobs.Creat_Jobs
         #job_List=Job.create_Jobs(200)
+        print("FCFS Running")
         Simulator.simulator("fcfs", 4, 5)
+        print("Priority Scheduling Running")
+        Simulator.simulator("priority", 4, 5)
 
 
 
