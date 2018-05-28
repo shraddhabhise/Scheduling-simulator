@@ -5,6 +5,7 @@ from collections import deque
 class Priority:
 
     queue = deque()
+    list_priority = []
 
     def sort_job(jobList):
 
@@ -51,6 +52,7 @@ class Priority:
                     completionTime = completionTime + cpu_slice
             Job.set_completion_time(running, completionTime)
             Job.set_turnaround_time(running, Job.get_completion_time(running))
+            Priority.list_priority.append(running)
 
             print("Completion time", running.completion_time)
             print("Turnaround time", running.turnaroundTime)
@@ -59,11 +61,12 @@ class Priority:
         print(" Throughput ", completionTime, num_jobs, throughput)
         total_TurnarounTime = completionTime / num_jobs
         print("Average Turn around time ", total_TurnarounTime)
+        return Priority.list_priority
 
     def execute_priority(num_of_jobs,cpu_slice,job_List):
         sorted_job_list = Priority.sort_job(job_List)
         queue = Priority.convert_to_queue(sorted_job_list)
-        Priority.calculate_times(queue, num_of_jobs, cpu_slice)
-
+        Priority.list_priority = Priority.calculate_times(queue, num_of_jobs, cpu_slice)
+        return Priority.list_priority
 
 
