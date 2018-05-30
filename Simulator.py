@@ -1,43 +1,35 @@
-#Entry point for starting the Simulator.
-
-import Timer
+#Entry point for starting the Simulator
 from Jobs import Job
 from Fcfs import Fcfs as fcfs
 from Priority import Priority as  priority
+import argparse
+import Jobs
 
+def main():
+    print("Starting Simulator")
+    parser = argparse.ArgumentParser()
+    requiredArgs = parser.add_argument_group('required arguments')
+    requiredArgs.add_argument("-n","--jobs",metavar="",help="Number of Jobs to be run on a scheduling Algorithm", type=int, required=True,action="store")
+    requiredArgs.add_argument("-t", "--cputime",metavar="",help="CPU Time", required=True,action="store", type=int)
+    njobs=parser.parse_args().jobs
+    cpuTime=parser.parse_args().cputime
+   
+    if njobs > 0 and cpuTime > 0:
+    #call the create jobs methods from the Jobs file
+        job_List=Jobs.create_Jobs(njobs)
+        print("Started Jobs execution through FCFS Scheduling")
+        fcfs_Job_List=fcfs().execute_fcfs(njobs,cpuTime,job_List)
+        print("Finished Jobs execution through FCFS Scheduling")
 
-class Simulator:
+        print("Started Jobs execution through Priority Scheduling")
+        fcfs_Job_List=priority().execute_priority(njobs,cpuTime,job_List)
+        print("Finished Jobs execution through Priority Scheduling")
 
-    fcfs_job_list = []
-    priority_job_list = []
-    linux_job_list = []
-
-    def simulator(algorithm, num_of_jobs, cpu_slice):
-        algorithm_to_execute = algorithm.capitalize()
-        job_List = Job.create_Jobs(num_of_jobs)
-
-        if(algorithm_to_execute == "Fcfs"):
-            Simulator.fcfs_job_list = fcfs.execute_fcfs(num_of_jobs,cpu_slice,job_List )
-
-        elif algorithm_to_execute == "Priority":
-            Simulator.priority_job_list= priority.execute_priority(num_of_jobs,cpu_slice,job_List)
-
-    def main():
-        print("Starting Simulator")
-        cpuTimer = Timer.Timer(count=50, step=1)
-        #cpuTimer.start_Timer()
-        #cpuTimer.stop()
-
-        #Create required number of Jobs for scheduling using Jobs.Creat_Jobs
-        #job_List=Job.create_Jobs(200)
-        print("FCFS Running")
-        Simulator.simulator("fcfs", 4, 5)
-        print("Priority Scheduling Running")
-        Simulator.simulator("priority", 4, 5)
+    print("Simulator Exiting")
 
 
 
 if __name__== "__main__":
-    Simulator.main()
+    main()
 
 

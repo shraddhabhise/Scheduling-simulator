@@ -84,7 +84,7 @@ class Fcfs:
         :return:
         """
 
-        Fcfs.convert_to_queue(job_list)
+        self.convert_to_queue(job_list)
 
         while len(Fcfs.queue) > 0:
             running = Fcfs.queue.popleft();
@@ -116,7 +116,7 @@ class Fcfs:
             turn_around_time = Fcfs.completed_job_list[x].get_waiting_time() + Fcfs.completed_job_list[x].get_execution_time()
             Fcfs.completed_job_list[x].set_turnaround_time(turn_around_time)
 
-    def convert_to_queue(job_list):
+    def convert_to_queue(self,job_list):
        """
        Convert the input list to queue
        :param job_list:
@@ -137,7 +137,7 @@ class Fcfs:
                 is_arrival_same = True
         return is_arrival_same
 
-    def execute_fcfs(num_of_jobs, cpu_slice, job_list):
+    def execute_fcfs(self,num_of_jobs, cpu_slice, job_list):
         """
         Execute various methods of Fcfs
         to calculate completion time, waiting time
@@ -146,23 +146,23 @@ class Fcfs:
         :param job_list:
         :return:
         """
-        fcfs = Fcfs()
+        #fcfs = Fcfs()
 
         # Sort jobs based on arrival Time
-        sorted_job_list = fcfs.sort_job(job_list)
+        sorted_job_list = self.sort_job(job_list)
 
         print("Calling -------> calculate_completion_time")
 
-        fcfs.calculate_completion_time(sorted_job_list, cpu_slice)
+        self.calculate_completion_time(sorted_job_list, cpu_slice)
 
-        if fcfs.check_arrival_time == True:
+        if self.check_arrival_time == True:
             print("Calling -------> calculate_wait_time_same_arrival")
-            fcfs.calculate_wait_time_same_arrival()
+            self.calculate_wait_time_same_arrival()
         else:
             print("Calling -------> calculate_wait_time_different_arrival")
-            fcfs.calculate_wait_time_different_arrival()
+            self.calculate_wait_time_different_arrival()
 
-        fcfs.calculate_turn_around_time()
-        print("Throughput: ",fcfs.completion_time/num_of_jobs)
+        self.calculate_turn_around_time()
+        print("Throughput: ",Fcfs.completion_time/num_of_jobs)
 
-        return fcfs.completed_job_list
+        return Fcfs.completed_job_list

@@ -7,7 +7,7 @@ class Priority:
     queue = deque()
     list_priority = []
 
-    def sort_job(jobList):
+    def sort_job(self,jobList):
 
         """ Sort the job list based on arrival time
         :param job_list:Job
@@ -21,7 +21,7 @@ class Priority:
         return sorted_job_list
 
 
-    def convert_to_queue(sortedList):
+    def convert_to_queue(self,sortedList):
         """
         Convert the input list to queue
         :param job_list:
@@ -32,7 +32,7 @@ class Priority:
         return Priority.queue
 
 
-    def calculate_times(queue, num_jobs, cpu_slice):
+    def calculate_times(self,queue, num_jobs, cpu_slice):
 
         completionTime = 0
         remaining_slice = 0
@@ -63,10 +63,10 @@ class Priority:
         print("Average Turn around time ", total_TurnarounTime)
         return Priority.list_priority
 
-    def execute_priority(num_of_jobs,cpu_slice,job_List):
-        sorted_job_list = Priority.sort_job(job_List)
-        queue = Priority.convert_to_queue(sorted_job_list)
-        Priority.list_priority = Priority.calculate_times(queue, num_of_jobs, cpu_slice)
+    def execute_priority(self,num_of_jobs,cpu_slice,job_List):
+        sorted_job_list = self.sort_job(job_List)
+        queue = self.convert_to_queue(sorted_job_list)
+        Priority.list_priority = self.calculate_times(queue, num_of_jobs, cpu_slice)
         return Priority.list_priority
 
 
