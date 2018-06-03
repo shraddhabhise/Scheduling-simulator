@@ -16,8 +16,9 @@ class CFS:
         sorted_job_list = sorted(jobList, key=lambda x: x.execution_time, reverse=False)
         print("Sorted List: ")
         for x in range(0, len(sorted_job_list)):
-            print("job id, arrival time, execution time", int(sorted_job_list[x].JobId),
-                  int(sorted_job_list[x].execution_time))
+            print("job id",int(sorted_job_list[x].JobId), "execution time", int(sorted_job_list[x].execution_time))
+            sorted_job_list[x].arrival_time = len(sorted_job_list) - (x+1)
+            print("job id",sorted_job_list[x].JobId, " arrival time", sorted_job_list[x].arrival_time)
         return sorted_job_list
 
     def convert_to_queue(self, sortedList):
@@ -31,8 +32,7 @@ class CFS:
         return CFS.queue
 
     def calculate_times(self, queue, num_jobs, cpu_slice):
-        # print("hi")
-        completionTime = 0
+        completionTime = 0.0
         remaining_slice = 0
         number_of_jobs = num_jobs
         while(len(queue)>0):
@@ -43,11 +43,19 @@ class CFS:
                 print("temporary slice:", temp_slice)
                 running.execution_time = running.execution_time - temp_slice
                 print("JobId, Exec time", running.JobId, running.execution_time)
-                completionTime = completionTime + temp_slice
+
                 if (running.execution_time > 0):
-                    CFS.queue.append(running)
+                    CFS.queue.appendleft(running)
+                    completionTime = completionTime + temp_slice
+                    print("process not complete",completionTime)
                 else:
                     flag =flag+1
+                    completionTime = completionTime + abs(running.execution_time)
+                    print("process complete")
+                    print("process id:", running.JobId)
+                    print("Completion time is :", completionTime)
+                    print("turnaround time :", completionTime-running.arrival_time)
+                    # running.completion_time = completionTime
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
 
