@@ -1,27 +1,58 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plot
+
+# Reference: https://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
+class PlotGraphs(object):
+
+        # def __init__(self, waiting_time_list, completion_time_list):
+        #         self.waiting_time_list = waiting_time_list
+        #         self.completion_time_list = completion_time_list
 
 
+        def compare_waiting_times(self,waiting_time_list):
+                # x-coordinates of left sides of bars
+                left = [1, 2, 3]
 
+                # heights of bars
+                height = waiting_time_list
 
-# x-coordinates of left sides of bars
-left = [1, 2, 3, 4, 5]
+                # labels for bars
+                tick_label = ['Priority', 'Fcfs', 'Linux']
 
-# heights of bars
-height = [10, 24, 36, 40, 5]
+                # plotting a bar chart
+                plot.bar(left, height, tick_label=tick_label,
+                         width=0.6, color=['blue'])
 
-# labels for bars
-tick_label = ['one', 'two', 'three', 'four', 'five']
+                # naming the x-axis
+                plot.xlabel('x - axis')
+                # naming the y-axis
+                plot.ylabel('y - axis')
+                # plot title
+                plot.title('Waiting Time Comparison')
 
-# plotting a bar chart
-plt.bar(left, height, tick_label=tick_label,
-        width=0.8, color=['red', 'green'])
+                # function to show the plot
+                plot.show()
 
-# naming the x-axis
-plt.xlabel('x - axis')
-# naming the y-axis
-plt.ylabel('y - axis')
-# plot title
-plt.title('My bar chart!')
+        def compare_completion_times(self, completion_time_list):
+                # x-coordinates of left sides of bars
+                left = [1, 2, 3]
 
-# function to show the plot
-plt.show()
+                # heights of bars
+                height = completion_time_list
+
+                # labels for bars
+                tick_label = ['Priority', 'Fcfs', 'Linux']
+
+                # plotting a bar chart
+                plot.bar(left, height, tick_label=tick_label,
+                         width=0.6, color=['blue'])
+
+                # naming the x-axis
+                plot.xlabel('x - axis')
+                # naming the y-axis
+                plot.ylabel('y - axis')
+                # plot title
+                plot.title('Completion Time Comparison')
+
+                # function to show the plot
+                plot.show()
+
