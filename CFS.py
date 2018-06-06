@@ -17,7 +17,7 @@ class CFS:
         print("Sorted List: ")
         for x in range(0, len(sorted_job_list)):
             print("job id",int(sorted_job_list[x].JobId), "execution time", int(sorted_job_list[x].execution_time))
-            sorted_job_list[x].arrival_time = len(sorted_job_list) - (x+1)
+            # sorted_job_list[x].arrival_time = len(sorted_job_list) - (x+1)
             print("job id",sorted_job_list[x].JobId, " arrival time", sorted_job_list[x].arrival_time)
         return sorted_job_list
 
@@ -51,10 +51,13 @@ class CFS:
                 else:
                     flag =flag+1
                     completionTime = completionTime + abs(running.execution_time)
+                    running.completion_time = completionTime + running.arrival_time
+                    running.waiting_time = running.completion_time -(running.arrival_time+running.execution_time)
                     print("process complete")
                     print("process id:", running.JobId)
-                    print("Completion time is :", completionTime)
-                    print("turnaround time :", completionTime-running.arrival_time)
+                    print("Completion time is :", running.completion_time)
+                    print("Waiting time:", running.waiting_time)
+                    print("turnaround time :", running.completion_time-running.arrival_time)
                     # running.completion_time = completionTime
             if flag>0:
                 number_of_jobs = number_of_jobs - flag

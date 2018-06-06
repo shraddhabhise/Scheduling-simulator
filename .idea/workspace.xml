@@ -14,44 +14,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Simulator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Simulator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CFS.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CFS.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CFS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360">
-              <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            <state relative-caret-position="418">
+              <caret line="66" column="19" selection-end-line="71" selection-end-column="27" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Priority.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Priority.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="53" column="68" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Jobs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Jobs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="39" column="28" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -86,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -96,6 +66,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,7 +78,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -192,32 +162,38 @@
       <option name="project" value="LOCAL" />
       <updated>1527898072703</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="turnaround time">
+      <created>1528019545245</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1528019545245</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-30" width="1366" height="798" extended-state="6" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25256222" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2655889" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26086956" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.07980653" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32889965" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2843602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32889965" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39903265" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39903265" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.19040698" />
       <window_info anchor="right" id="Data View" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32889965" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32889965" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -231,10 +207,10 @@
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.07980653" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32769045" />
       <window_info anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.19040698" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32889965" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39903265" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32889965" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32889965" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="1" />
@@ -272,7 +248,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CFS schedular" />
-    <option name="LAST_COMMIT_MESSAGE" value="CFS schedular" />
+    <MESSAGE value="turnaround time" />
+    <option name="LAST_COMMIT_MESSAGE" value="turnaround time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -280,6 +257,57 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CFS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" column="19" lean-forward="true" selection-end-line="71" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CFS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Simulator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Priority.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="53" column="68" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jobs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CFS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Simulator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -308,9 +336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2370">
           <caret line="160" column="13" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -325,9 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -339,21 +361,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Fcfs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Priority.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -379,9 +392,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1202">
           <caret line="160" column="13" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Priority.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="53" column="68" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -394,18 +411,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CFS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Priority.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="53" column="68" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="68" />
+        <state relative-caret-position="418">
+          <caret line="66" column="19" selection-end-line="71" selection-end-column="27" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
