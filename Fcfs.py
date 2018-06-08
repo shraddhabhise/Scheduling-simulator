@@ -44,11 +44,12 @@ class Fcfs:
               int(Fcfs.completed_job_list[0].execution_time), int(Fcfs.completed_job_list[0].get_waiting_time()))
 
         for x in range(1, len(Fcfs.completed_job_list)):
-            wait_time = Fcfs.completed_job_list[x].get_arrival_time() - Fcfs.completed_job_list[x-1].get_arrival_time() - Fcfs.completed_job_list[x-1].get_execution_time()
-            if wait_time > 0:
+            wait_time = Fcfs.completed_job_list[x-1].get_arrival_time() +  Fcfs.completed_job_list[x-1].get_execution_time() +Fcfs.completed_job_list[x-1].get_waiting_time() - Fcfs.completed_job_list[x].get_arrival_time()
+
+            if wait_time < 0:
                 wait_time = 0
-            else:
-                wait_time = abs(wait_time)
+            # else:
+            #    wait_time = abs(wait_time)
             Fcfs.completed_job_list[x].set_waiting_time(wait_time)
             print("job id, arrival time, execution time, waiting time", int(Fcfs.completed_job_list[x].JobId),
                   int(Fcfs.completed_job_list[x].arrival_time),
@@ -115,6 +116,7 @@ class Fcfs:
         for x in range(0, len(Fcfs.completed_job_list)):
             turn_around_time = Fcfs.completed_job_list[x].get_waiting_time() + Fcfs.completed_job_list[x].get_execution_time()
             Fcfs.completed_job_list[x].set_turnaround_time(turn_around_time)
+            print( Fcfs.completed_job_list[x].get_turnaround_Time())
 
     def convert_to_queue(self,job_list):
        """
@@ -137,6 +139,8 @@ class Fcfs:
                 is_arrival_same = True
         return is_arrival_same
 
+
+
     def execute_fcfs(self,num_of_jobs, cpu_slice, job_list):
         """
         Execute various methods of Fcfs
@@ -155,14 +159,28 @@ class Fcfs:
 
         self.calculate_completion_time(sorted_job_list, cpu_slice)
 
+        print("check_arrival_time:", self.check_arrival_time)
+
         if self.check_arrival_time == True:
             print("Calling -------> calculate_wait_time_same_arrival")
             self.calculate_wait_time_same_arrival()
         else:
-            print("Calling -------> calculate_wait_time_different_arrival")
+            print("Calling -------> calculate_wait"
+                  "_time_different_arrival")
             self.calculate_wait_time_different_arrival()
 
         self.calculate_turn_around_time()
         print("Throughput: ",Fcfs.completion_time/num_of_jobs)
+
+        total_wait_time = 0
+        for x in range(0, len(Fcfs.completed_job_list)):
+            total_wait_time = total_wait_time + Fcfs.completed_job_list[x].get_waiting_time()
+
+        avg_wait_time = total_wait_time / 4
+        print("avg_wait_time:", avg_wait_time)
+
+        for x in range(0, len(Fcfs.completed_job_list)):
+            print("Waiting time, Completion Time", Fcfs.completed_job_list[x].get_waiting_time(), Fcfs.completed_job_list[x].get_completion_time())
+
 
         return Fcfs.completed_job_list

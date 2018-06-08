@@ -67,7 +67,7 @@ def create_Jobs(num_jobs):
         exec_time = random.randint(1, 10)
         priority = random.randint(1, 5)
         arrival_time = random.randint(1, 40)
-        job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority, arrival_time = arrival_time))
+        job_list.append(Job(job_id=x, execution_time=exec_time, priority=priority, arrival_time = x))
     return job_list
 
 
