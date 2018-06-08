@@ -8,12 +8,18 @@ class PlotGraphs(object):
         #         self.completion_time_list = completion_time_list
 
 
+
         def compare_waiting_times(self,waiting_time_list):
                 # x-coordinates of left sides of bars
                 left = [1, 2, 3]
 
+
                 # heights of bars
                 height = waiting_time_list
+
+                print("waiting times from PlotGraphs:")
+                for x in range(len(height)):
+                    print("height[0]:", height[x])
 
                 # labels for bars
                 tick_label = ['Fcfs', 'Priority', 'CFS']
@@ -23,9 +29,9 @@ class PlotGraphs(object):
                          width=0.6, color=['blue'])
 
                 # naming the x-axis
-                plot.xlabel('x - axis')
+                plot.xlabel('x - axis (Algorithms)')
                 # naming the y-axis
-                plot.ylabel('y - axis')
+                plot.ylabel('y - axis (Time in Seconds)')
                 # plot title
                 plot.title('Waiting Time Comparison')
 
@@ -36,20 +42,25 @@ class PlotGraphs(object):
                 # x-coordinates of left sides of bars
                 left = [1, 2, 3]
 
+
                 # heights of bars
                 height = completion_time_list
 
+                print("Completion times from PlotGraphs:")
+                for x in range(len(height)):
+                    print("height:", height[x])
+
                 # labels for bars
-                tick_label = ['Priority', 'Fcfs', 'Linux']
+                tick_label = ['Fcfs', 'Priority', 'Linux']
 
                 # plotting a bar chart
                 plot.bar(left, height, tick_label=tick_label,
                          width=0.6, color=['blue'])
 
                 # naming the x-axis
-                plot.xlabel('x - axis')
+                plot.xlabel('x - axis (Algorithms)')
                 # naming the y-axis
-                plot.ylabel('y - axis')
+                plot.ylabel('y - axis (Time in Seconds)')
                 # plot title
                 plot.title('Completion Time Comparison')
 

@@ -39,10 +39,6 @@ class Simulator:
             cfs_wait_time = self.calculate_avg_wait_time(cfs_job_list, njobs)
 
             # Append each wait time in the y_axis list
-            print("Average Wait times--------------------------->")
-            print("fcfs_wait_time", fcfs_wait_time)
-            print("priority_wait_time", priority_wait_time)
-            print("cfs_wait_time", cfs_wait_time)
             y_axis_list.append(fcfs_wait_time)
             y_axis_list.append(priority_wait_time)
             y_axis_list.append(cfs_wait_time)
@@ -53,13 +49,9 @@ class Simulator:
             # Calculate the completion time for each algorithm
             fcfs_completion_time = self.calculate_avg_completion_time(fcfs_job_list, njobs)
             priority_completion_time = self.calculate_avg_completion_time(priority_job_list, njobs)
-            cfs_completion_time = self.calculate_avg_completion_time(cfs_job_list, njobs)
+            cfs_completion_time = self.calculate_avg_completion_time(cfs_job_list, njobs) # Uncomment this
 
             # Append each completion time in the y_axis list
-            print("Average Completion times--------------------------->")
-            print("fcfs_completion_time", fcfs_completion_time)
-            print("priority_completion_time", priority_completion_time)
-            print("cfs_completion_time", cfs_completion_time)
             y_axis_list.append(fcfs_completion_time)
             y_axis_list.append(priority_completion_time)
             y_axis_list.append(cfs_completion_time)
@@ -118,18 +110,19 @@ def main():
         priority_job_list = deepcopy(job_List)
         cfs_job_list = deepcopy(job_List)
         print("Started Jobs execution through FCFS Scheduling")
-
         fcfs_job_list = fcfs().execute_fcfs(njobs, cpuTime, fcfs_job_list)
         print("Finished Jobs execution through FCFS Scheduling")
-
+        print("-----------------------------------------------------------------")
         print("Started Jobs execution through Priority Scheduling")
-
-        priority_job_list = priority().execute_priority(njobs, cpuTime, priority_job_list)
+        print("-----------------------------------------------------------------")
+        priority_job_list = priority().execute_priority(njobs, cpuTime, job_List)
         print("Finished Jobs execution through Priority Scheduling")
-
+        print("-----------------------------------------------------------------")
         print("Started Jobs execution through CFS Scheduling")
+        print("-----------------------------------------------------------------")
         cfs_job_list = cfs().execute_priority(njobs, cpuTime, cfs_job_list)
         print("Finished Jobs execution through CFS Scheduling")
+        print("-------------------------------End-------------------------------")
 
         # Display graphs
         sim = Simulator()
