@@ -16,7 +16,7 @@ class Priority:
         sorted_job_list = sorted(jobList, key=lambda x: x.priority, reverse=False)
         print("Sorted List: ")
         for x in range(0, len(sorted_job_list)):
-            print("job id, arrival time, execution time", int(sorted_job_list[x].JobId),
+            print("job id, Priority, execution time", int(sorted_job_list[x].JobId),
                   int(sorted_job_list[x].priority), int(sorted_job_list[x].execution_time))
         return sorted_job_list
 
@@ -50,6 +50,9 @@ class Priority:
 
                 else:
                     completionTime = completionTime + cpu_slice
+
+            print(running.execution_time)
+            #Job.set_waiting_time(running, completionTime - running.execution_time)
             Job.set_completion_time(running, completionTime)
             Job.set_turnaround_time(running, Job.get_completion_time(running))
             Priority.list_priority.append(running)

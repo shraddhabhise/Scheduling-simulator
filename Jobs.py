@@ -54,6 +54,12 @@ class Job:
     def get_turnaround_Time(self):
         return self.turnaroundTime
 
+    def set_cpu_burst(self, cpu_burst):
+        self.cpu_burst=cpu_burst
+
+    def get_cpu_burst(self):
+        return self.cpu_burst
+
     def set_job_id(self, JobId):
         self.status = JobId
 
