@@ -5,12 +5,13 @@ from Priority import Priority as priority
 import argparse
 import Jobs
 from PlotGraphs import PlotGraphs
+from copy import deepcopy
 
 
 class Simulator:
 
     def display_graphs(self, fcfs_job_list, priority_job_list, njobs):
-
+        print("njobs", njobs)
         wait_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, njobs, "wait")
         completion_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, njobs, "completion")
         pg = PlotGraphs()
@@ -33,7 +34,9 @@ class Simulator:
         if str(time_to_calculate).lower() == "wait":
             # Calculate the wait time for each algorithm
             fcfs_wait_time = self.calculate_avg_wait_time(fcfs_job_list, njobs)
+            print("fcfs_wait_time:", fcfs_wait_time)
             priority_wait_time = self.calculate_avg_wait_time(priority_job_list, njobs)
+            print("priority_wait_time", priority_wait_time)
             # linux_wait_time = self.calculate_avg_wait_time(linux_job_list, njobs) # Uncomment this
 
             # Append each wait time in the y_axis list
@@ -68,7 +71,8 @@ class Simulator:
         for x in range(0, len(job_list)):
             total_wait_time = total_wait_time + job_list[x].get_waiting_time()
 
-        avg_wait_time = total_wait_time / no_of_jobs
+        avg_wait_time = total_wait_time/no_of_jobs
+        print("avg_wait_time:", avg_wait_time)
         return avg_wait_time
 
     def calculate_avg_completion_time(self, job_list, no_of_jobs):
@@ -104,12 +108,16 @@ def main():
         # call the create jobs methods from the Jobs file
 
         job_List = Jobs.create_Jobs(njobs)
+        fcfs_job_list = deepcopy(job_List)
+        priority_job_list = deepcopy(job_List)
         print("Started Jobs execution through FCFS Scheduling")
-        fcfs_job_list = fcfs().execute_fcfs(njobs, cpuTime, job_List)
+
+        fcfs_job_list = fcfs().execute_fcfs(njobs, cpuTime, fcfs_job_list)
         print("Finished Jobs execution through FCFS Scheduling")
 
         print("Started Jobs execution through Priority Scheduling")
-        priority_job_list = priority().execute_priority(njobs, cpuTime, job_List)
+
+        priority_job_list = priority().execute_priority(njobs, cpuTime, priority_job_list)
         print("Finished Jobs execution through Priority Scheduling")
 
         # Display graphs
