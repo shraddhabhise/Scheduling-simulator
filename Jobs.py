@@ -30,6 +30,12 @@ class Job:
     def get_arrival_time(self):
         return self.arrival_time
 
+    def set_cpu_burst(self, cpu_burst):
+        self.cpu_burst=cpu_burst
+
+    def get_cpu_burst(self):
+        return self.cpu_burst
+
     def set_execution_time(self, execution_time):
         self.execution_time = execution_time
 

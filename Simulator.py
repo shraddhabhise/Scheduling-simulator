@@ -108,14 +108,17 @@ def main():
         print("Started Jobs execution through FCFS Scheduling")
         fcfs_job_list = fcfs().execute_fcfs(njobs, cpuTime, job_List)
         print("Finished Jobs execution through FCFS Scheduling")
-
+        print("-----------------------------------------------------------------")
         print("Started Jobs execution through Priority Scheduling")
+        print("-----------------------------------------------------------------")
         priority_job_list = priority().execute_priority(njobs, cpuTime, job_List)
         print("Finished Jobs execution through Priority Scheduling")
-
+        print("-----------------------------------------------------------------")
         print("Started Jobs execution through CFS Scheduling")
+        print("-----------------------------------------------------------------")
         cfs_job_list = cfs().execute_priority(njobs, cpuTime, job_List)
         print("Finished Jobs execution through CFS Scheduling")
+        print("-------------------------------End-------------------------------")
 
         # Display graphs
         sim = Simulator()
