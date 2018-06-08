@@ -2,6 +2,7 @@
 # Entry point for starting the Simulator
 from Fcfs import Fcfs as fcfs
 from Priority import Priority as priority
+from CFS import CFS as cfs
 import argparse
 import Jobs
 from PlotGraphs import PlotGraphs
@@ -9,16 +10,16 @@ from PlotGraphs import PlotGraphs
 
 class Simulator:
 
-    def display_graphs(self, fcfs_job_list, priority_job_list, njobs):
+    def display_graphs(self, fcfs_job_list, priority_job_list, cfs_job_list, njobs):
 
-        wait_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, njobs, "wait")
-        completion_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, njobs, "completion")
+        wait_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, cfs_job_list, njobs, "wait")
+        completion_y_axis = self.populate_y_axis_list(fcfs_job_list, priority_job_list, cfs_job_list, njobs, "completion")
         pg = PlotGraphs()
 
         pg.compare_waiting_times(wait_y_axis)
         pg.compare_completion_times(completion_y_axis)
 
-    def populate_y_axis_list(self, fcfs_job_list, priority_job_list, njobs, time_to_calculate):
+    def populate_y_axis_list(self, fcfs_job_list, priority_job_list, cfs_job_list, njobs, time_to_calculate):
         """
         This method calculates either wait time or completion time
         based on value time_to_calculate, and populates the y-axis list
@@ -34,26 +35,26 @@ class Simulator:
             # Calculate the wait time for each algorithm
             fcfs_wait_time = self.calculate_avg_wait_time(fcfs_job_list, njobs)
             priority_wait_time = self.calculate_avg_wait_time(priority_job_list, njobs)
-            # linux_wait_time = self.calculate_avg_wait_time(linux_job_list, njobs) # Uncomment this
+            cfs_wait_time = self.calculate_avg_wait_time(cfs_job_list, njobs) # Uncomment this
 
             # Append each wait time in the y_axis list
             y_axis_list.append(fcfs_wait_time)
             y_axis_list.append(priority_wait_time)
-            # self.y_axis_list.append(linux_wait_time)
-            y_axis_list.append(10)  # Remove this hardcoded value
+            y_axis_list.append(cfs_wait_time)
+
             return y_axis_list
 
         elif str(time_to_calculate).lower() == "completion":
             # Calculate the completion time for each algorithm
             fcfs_completion_time = self.calculate_avg_completion_time(fcfs_job_list, njobs)
             priority_completion_time = self.calculate_avg_completion_time(priority_job_list, njobs)
-            # linux_completion_time = self.calculate_avg_completion_time(linux_job_list, njobs) # Uncomment this
+            cfs_completion_time = self.calculate_avg_completion_time(cfs_job_list, njobs) # Uncomment this
 
             # Append each completion time in the y_axis list
             y_axis_list.append(fcfs_completion_time)
             y_axis_list.append(priority_completion_time)
-            # self.y_axis_list.append(linux_wait_time)
-            y_axis_list.append(10)  # Remove this hardcoded value
+            y_axis_list.append(cfs_completion_time)
+
             return y_axis_list
 
     def calculate_avg_wait_time(self, job_list, no_of_jobs):
@@ -112,9 +113,13 @@ def main():
         priority_job_list = priority().execute_priority(njobs, cpuTime, job_List)
         print("Finished Jobs execution through Priority Scheduling")
 
+        print("Started Jobs execution through CFS Scheduling")
+        cfs_job_list = cfs().execute_priority(njobs, cpuTime, job_List)
+        print("Finished Jobs execution through CFS Scheduling")
+
         # Display graphs
         sim = Simulator()
-        sim.display_graphs(fcfs_job_list, priority_job_list, njobs)
+        sim.display_graphs(fcfs_job_list, priority_job_list, cfs_job_list, njobs)
 
     print("Simulator Exiting")
 

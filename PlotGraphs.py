@@ -16,7 +16,7 @@ class PlotGraphs(object):
                 height = waiting_time_list
 
                 # labels for bars
-                tick_label = ['Priority', 'Fcfs', 'Linux']
+                tick_label = ['Fcfs', 'Priority', 'CFS']
 
                 # plotting a bar chart
                 plot.bar(left, height, tick_label=tick_label,
