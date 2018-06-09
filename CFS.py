@@ -39,6 +39,7 @@ class CFS:
         cpu_slice: cpu time slice for which jobs can run.
         :return:
         """
+        Total_completion = 0
         completionTime = 0.0
         number_of_jobs = num_jobs
         while(len(queue)>0):
@@ -57,6 +58,8 @@ class CFS:
                     flag =flag+1
                     completionTime = completionTime + (temp_slice - abs(running.execution_time))
                     # running.completion_time = completionTime
+
+                    Total_completion = Total_completion + completionTime
 
                     # set completeion time of running job
                     Job.set_completion_time(running, completionTime)
@@ -80,9 +83,7 @@ class CFS:
 
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
-        Total_completion = 0
-        for x in range(0, len(CFS.list_CFS)):
-            Total_completion = Total_completion + Job.get_completion_time(CFS.list_CFS[x])
+
 
         throughput = num_jobs / Total_completion
         print("Throughput ", throughput)
