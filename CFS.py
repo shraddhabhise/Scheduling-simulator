@@ -56,10 +56,20 @@ class CFS:
                 elif running.execution_time <= 0 :
                     flag =flag+1
                     completionTime = completionTime + (temp_slice - abs(running.execution_time))
-                    running.completion_time = completionTime
+                    # running.completion_time = completionTime
 
-                    waitingTime =running.completion_time - running.cpu_burst
-                    running.waiting_time = waitingTime
+                    # set completeion time of running job
+                    Job.set_completion_time(running, completionTime)
+
+                    # set turnaround time of running job
+                    Job.set_turnaround_time(running, Job.get_completion_time(running))
+
+                    waitingTime =Job.get_completion_time(running) - running.cpu_burst
+                    # running.waiting_time = waitingTime
+
+                    # set waiting time of running job
+                    Job.set_waiting_time(running, waitingTime)
+
                     CFS.list_CFS.append(running)
 
                     print("JobId:", running.JobId)
