@@ -80,12 +80,15 @@ class CFS:
 
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
+        Total_completion = 0
+        for x in range(0, len(CFS.list_CFS)):
+            Total_completion = Total_completion + Job.get_completion_time(CFS.list_CFS[x])
 
-        throughput = num_jobs / completionTime
+        throughput = num_jobs / Total_completion
         print("Throughput ", throughput)
 
         # calculate total turnaround time
-        total_TurnarounTime = completionTime / num_jobs
+        total_TurnarounTime = Total_completion / num_jobs
 
         print("Average Turn around time ", total_TurnarounTime)
         print("-----------------------------------------------------------------")
