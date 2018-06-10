@@ -43,6 +43,7 @@ class Priority:
        """
        #completionTime is a responsible for keeping a count of total completion time
        completionTime = 0
+       Total_completion = 0
 
        #remaining_slice is responsible for keeing a count of time slice remaining after
        # a particular process completes running
@@ -59,6 +60,7 @@ class Priority:
                    remaining_slice = abs(job_burst)
                    completionTime = completionTime + job_burst + cpu_slice
                    cpu_slice = remaining_slice
+                   Total_completion = Total_completion + completionTime
 
                else:                                   # if execution time is 0 or less then 0, i.e if process is complete
                    completionTime = completionTime + cpu_slice
@@ -78,12 +80,12 @@ class Priority:
            print("-----------------------------------------------------------------")
 
        # calculate total throughput
-       Priority.priority_throughput = num_jobs / completionTime
-       print("Priority Completion time:", completionTime)
+       Priority.priority_throughput = num_jobs / Total_completion
+       print("Priority Completion time:", Total_completion)
        print(" Throughput ", Priority.priority_throughput)
 
        # calculate total turnaround time
-       total_TurnarounTime = completionTime / num_jobs
+       total_TurnarounTime = Total_completion / num_jobs
        print("Average Turn around time ", total_TurnarounTime)
        print("-----------------------------------------------------------------")
        return Priority.list_priority

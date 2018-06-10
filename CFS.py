@@ -5,7 +5,7 @@ from collections import deque
 class CFS:
     queue = deque()
     queue1 = deque()
-    list_CFS = []
+    cfs_jobs = []
     cfs_throughput = 0
 
     def sort_job(self, jobList):
@@ -40,7 +40,8 @@ class CFS:
         cpu_slice: cpu time slice for which jobs can run.
         :return:
         """
-        completionTime = 0.0
+        total_completion = 0
+        completion_time = 0.0
         number_of_jobs = num_jobs
         while(len(queue)>0):
             flag = 0
@@ -52,15 +53,17 @@ class CFS:
                 running.cpu_burst = running.cpu_burst + temp_slice
                 if (running.execution_time > 0):
                     CFS.queue.appendleft(running)
-                    completionTime = completionTime + temp_slice
+                    completion_time = completion_time + temp_slice
 
                 elif running.execution_time <= 0 :
                     flag =flag+1
-                    completionTime = completionTime + (temp_slice - abs(running.execution_time))
-                    # running.completion_time = completionTime
+                    completion_time = completion_time + (temp_slice - abs(running.execution_time))
+                    # running.completion_time = completion_time
+
+                    total_completion = total_completion + completion_time
 
                     # set completeion time of running job
-                    Job.set_completion_time(running, completionTime)
+                    Job.set_completion_time(running, completion_time)
 
                     # set turnaround time of running job
                     Job.set_turnaround_time(running, Job.get_completion_time(running))
@@ -71,7 +74,7 @@ class CFS:
                     # set waiting time of running job
                     Job.set_waiting_time(running, waitingTime)
 
-                    CFS.list_CFS.append(running)
+                    CFS.cfs_jobs.append(running)
 
                     print("JobId:", running.JobId)
                     print("Completion time", running.completion_time)
@@ -82,23 +85,23 @@ class CFS:
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
 
-        print("CFS Completion time:",completionTime)
+        print("CFS Completion time:",total_completion)
 
-        CFS.cfs_throughput = num_jobs / completionTime
+        CFS.cfs_throughput = num_jobs / total_completion
         print("Throughput ", self.cfs_throughput)
 
         # calculate total turnaround time
-        total_TurnarounTime = completionTime / num_jobs
+        total_TurnarounTime = total_completion / num_jobs
 
         print("Average Turn around time ", total_TurnarounTime)
         print("-----------------------------------------------------------------")
 
-        return CFS.list_CFS
+        return CFS.cfs_jobs
 
     def execute_priority(self, num_of_jobs, cpu_slice, job_List):
         sorted_job_list = self.sort_job(job_List)
         for i in range(len(sorted_job_list)):
             CFS.queue.append(sorted_job_list[i])
         # print(CFS.queue)
-        CFS.list_CFS = CFS.calculate_times(self, CFS.queue, num_of_jobs, cpu_slice)
-        return CFS.list_CFS
+        CFS.cfs_jobs = CFS.calculate_times(self, CFS.queue, num_of_jobs, cpu_slice)
+        return CFS.cfs_jobs
