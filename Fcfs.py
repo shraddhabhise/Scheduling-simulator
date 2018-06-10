@@ -16,6 +16,7 @@ class Fcfs:
     wait_time = 0
     completed_job_list = []
     completion_time = 0
+    fcfs_throughput = 0
 
     @staticmethod
     def sort_job(job_list):
@@ -24,10 +25,6 @@ class Fcfs:
         :return: sorted_job_list
         """
         sorted_job_list = sorted(job_list, key=lambda x: x.arrival_time, reverse=False)
-        print("Sorted List: ")
-        for x in range(0, len(sorted_job_list)):
-            print("job id, arrival time, execution time", int(sorted_job_list[x].JobId),
-                  int(sorted_job_list[x].arrival_time), int(sorted_job_list[x].execution_time))
         return sorted_job_list
 
     def calculate_wait_time_different_arrival(self):
@@ -39,10 +36,6 @@ class Fcfs:
         """
         Fcfs.completed_job_list[0].set_waiting_time(0)
 
-        print("job id, arrival time, execution time, waiting time", int(Fcfs.completed_job_list[0].JobId),
-              int(Fcfs.completed_job_list[0].arrival_time),
-              int(Fcfs.completed_job_list[0].execution_time), int(Fcfs.completed_job_list[0].get_waiting_time()))
-
         for x in range(1, len(Fcfs.completed_job_list)):
             wait_time = Fcfs.completed_job_list[x-1].get_arrival_time() +  Fcfs.completed_job_list[x-1].get_execution_time() +Fcfs.completed_job_list[x-1].get_waiting_time() - Fcfs.completed_job_list[x].get_arrival_time()
 
@@ -51,10 +44,6 @@ class Fcfs:
             # else:
             #    wait_time = abs(wait_time)
             Fcfs.completed_job_list[x].set_waiting_time(wait_time)
-            print("job id, arrival time, execution time, waiting time", int(Fcfs.completed_job_list[x].JobId),
-                  int(Fcfs.completed_job_list[x].arrival_time),
-                  int(Fcfs.completed_job_list[x].execution_time), int(Fcfs.completed_job_list[x].get_waiting_time()))
-
 
     def calculate_wait_time_same_arrival(self):
         """Calculate wait time when arrival times are same
@@ -65,15 +54,10 @@ class Fcfs:
         :return:
         """
         Fcfs.completed_job_list[0].set_waiting_time(0)
-        print("job id, arrival time, execution time, waiting time", int(Fcfs.completed_job_list[0].JobId),
-              int(Fcfs.completed_job_list[0].arrival_time),
-              int(Fcfs.completed_job_list[0].execution_time), int(Fcfs.completed_job_list[0].get_waiting_time()))
 
         for x in range(1, len(Fcfs.completed_job_list)):
             wait_time = Fcfs.completed_job_list[x-1].get_waiting_time() + Fcfs.completed_job_list[x-1].get_execution_time()
             Fcfs.completed_job_list[x].set_waiting_time(wait_time)
-            print("job id, arrival time, execution time, waiting time", int(Fcfs.completed_job_list[x].JobId), int(Fcfs.completed_job_list[x].arrival_time),
-                  int(Fcfs.completed_job_list[x].execution_time), int(Fcfs.completed_job_list[x].get_waiting_time()))
 
     def calculate_completion_time(self,job_list,cpu_time_slice):
         """Calculate completion time
@@ -103,8 +87,8 @@ class Fcfs:
 
             running.set_status("COMPLETED")
             running.set_completion_time(Fcfs.completion_time)
-            print("Job id, Completion time:", running.JobId, Fcfs.completion_time)
             Fcfs.completed_job_list.append(running)
+        print("Fcfs.completion_time",  Fcfs.completion_time)
 
     def calculate_turn_around_time(self):
         """ Calculate turn around time
@@ -116,7 +100,6 @@ class Fcfs:
         for x in range(0, len(Fcfs.completed_job_list)):
             turn_around_time = Fcfs.completed_job_list[x].get_waiting_time() + Fcfs.completed_job_list[x].get_execution_time()
             Fcfs.completed_job_list[x].set_turnaround_time(turn_around_time)
-            print( Fcfs.completed_job_list[x].get_turnaround_Time())
 
     def convert_to_queue(self,job_list):
        """
@@ -140,6 +123,13 @@ class Fcfs:
         return is_arrival_same
 
 
+    def print_job_list(self, job_list):
+        for x in range(len(job_list)):
+            print("JobId:", job_list[x].get_job_id(), "Execution time:",job_list[x].get_execution_time() , "Arrival Time: ",job_list[x].get_arrival_time())
+            print("Completion time ",job_list[x].get_completion_time())
+            print("Turnaround time ", job_list[x].get_turnaround_Time())
+            print("Waiting", job_list[x].get_waiting_time())
+            print("-----------------------------------------------------------------")
 
     def execute_fcfs(self,num_of_jobs, cpu_slice, job_list):
         """
@@ -150,16 +140,12 @@ class Fcfs:
         :param job_list:
         :return:
         """
-        #fcfs = Fcfs()
 
         # Sort jobs based on arrival Time
         sorted_job_list = self.sort_job(job_list)
 
-        print("Calling -------> calculate_completion_time")
-
         self.calculate_completion_time(sorted_job_list, cpu_slice)
 
-        print("check_arrival_time:", self.check_arrival_time)
 
         if self.check_arrival_time == True:
             print("Calling -------> calculate_wait_time_same_arrival")
@@ -170,17 +156,12 @@ class Fcfs:
             self.calculate_wait_time_different_arrival()
 
         self.calculate_turn_around_time()
-        print("Throughput: ",Fcfs.completion_time/num_of_jobs)
 
-        total_wait_time = 0
-        for x in range(0, len(Fcfs.completed_job_list)):
-            total_wait_time = total_wait_time + Fcfs.completed_job_list[x].get_waiting_time()
 
-        avg_wait_time = total_wait_time / 4
-        print("avg_wait_time:", avg_wait_time)
+        self.print_job_list(Fcfs.completed_job_list)
 
-        for x in range(0, len(Fcfs.completed_job_list)):
-            print("Waiting time, Completion Time", Fcfs.completed_job_list[x].get_waiting_time(), Fcfs.completed_job_list[x].get_completion_time())
-
+        print("FCFS Completion time:", Fcfs.completion_time)
+        Fcfs.fcfs_throughput = num_of_jobs / Fcfs.completion_time
+        print("Throughput: ", self.fcfs_throughput)
 
         return Fcfs.completed_job_list

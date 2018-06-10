@@ -7,6 +7,7 @@ class Priority:
 
    queue = deque()
    list_priority = []
+   priority_throughput = 0
 
    def sort_job(jobList):
 
@@ -77,8 +78,9 @@ class Priority:
            print("-----------------------------------------------------------------")
 
        # calculate total throughput
-       throughput = num_jobs / completionTime
-       print(" Throughput ", throughput)
+       Priority.priority_throughput = num_jobs / completionTime
+       print("Priority Completion time:", completionTime)
+       print(" Throughput ", Priority.priority_throughput)
 
        # calculate total turnaround time
        total_TurnarounTime = completionTime / num_jobs

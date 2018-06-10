@@ -6,6 +6,7 @@ class CFS:
     queue = deque()
     queue1 = deque()
     list_CFS = []
+    cfs_throughput = 0
 
     def sort_job(self, jobList):
 
@@ -81,8 +82,10 @@ class CFS:
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
 
-        throughput = num_jobs / completionTime
-        print("Throughput ", throughput)
+        print("CFS Completion time:",completionTime)
+
+        CFS.cfs_throughput = num_jobs / completionTime
+        print("Throughput ", self.cfs_throughput)
 
         # calculate total turnaround time
         total_TurnarounTime = completionTime / num_jobs

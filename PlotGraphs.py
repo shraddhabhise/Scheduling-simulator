@@ -17,7 +17,7 @@ class PlotGraphs(object):
                 # heights of bars
                 height = waiting_time_list
 
-                print("waiting times from PlotGraphs:")
+                print("Waiting times from PlotGraphs:")
                 for x in range(len(height)):
                     print("height[0]:", height[x])
 
@@ -63,6 +63,65 @@ class PlotGraphs(object):
                 plot.ylabel('y - axis (Time in Seconds)')
                 # plot title
                 plot.title('Completion Time Comparison')
+
+                # function to show the plot
+                plot.show()
+
+
+        def compare_turnaround_times(self, turnaround_time_list):
+                # x-coordinates of left sides of bars
+                left = [1, 2, 3]
+
+
+                # heights of bars
+                height = turnaround_time_list
+
+                print("Turn Around Times from PlotGraphs:")
+                for x in range(len(height)):
+                    print("height:", height[x])
+
+                # labels for bars
+                tick_label = ['Fcfs', 'Priority', 'Linux']
+
+                # plotting a bar chart
+                plot.bar(left, height, tick_label=tick_label,
+                         width=0.6, color=['blue'])
+
+                # naming the x-axis
+                plot.xlabel('x - axis (Algorithms)')
+                # naming the y-axis
+                plot.ylabel('y - axis (Time in Seconds)')
+                # plot title
+                plot.title('Turn Around Time Comparison')
+
+                # function to show the plot
+                plot.show()
+
+        def compare_throughputs(self, throughput_list):
+                # x-coordinates of left sides of bars
+                left = [1, 2, 3]
+
+
+                # heights of bars
+                height = throughput_list
+
+                print("Throughput from PlotGraphs:")
+                for x in range(len(height)):
+                    print("height:", height[x])
+
+                # labels for bars
+                tick_label = ['Fcfs', 'Priority', 'Linux']
+
+                # plotting a bar chart
+                plot.bar(left, height, tick_label=tick_label,
+                         width=0.6, color=['blue'])
+
+                # naming the x-axis
+                plot.xlabel('x - axis (Algorithms)')
+                # naming the y-axis
+                plot.ylabel('y - axis (Time in Seconds)')
+                # plot title
+                plot.title('Throughput Comparison')
 
                 # function to show the plot
                 plot.show()
