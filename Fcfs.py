@@ -90,6 +90,8 @@ class Fcfs:
             Fcfs.completed_jobs.append(running)
         print("Fcfs.completion_time",  Fcfs.completion_time)
 
+
+
     def calculate_turn_around_time(self):
         """ Calculate turn around time
         This method calculates the turn around time

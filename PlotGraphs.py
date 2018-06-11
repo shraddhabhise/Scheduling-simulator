@@ -51,7 +51,7 @@ class PlotGraphs(object):
                     print("height:", height[x])
 
                 # labels for bars
-                tick_label = ['Fcfs', 'Priority', 'Linux']
+                tick_label = ['Fcfs', 'Priority', 'CFS']
 
                 # plotting a bar chart
                 plot.bar(left, height, tick_label=tick_label,
@@ -81,7 +81,7 @@ class PlotGraphs(object):
                     print("height:", height[x])
 
                 # labels for bars
-                tick_label = ['Fcfs', 'Priority', 'Linux']
+                tick_label = ['Fcfs', 'Priority', 'CFS']
 
                 # plotting a bar chart
                 plot.bar(left, height, tick_label=tick_label,
@@ -110,7 +110,7 @@ class PlotGraphs(object):
                     print("height:", height[x])
 
                 # labels for bars
-                tick_label = ['Fcfs', 'Priority', 'Linux']
+                tick_label = ['Fcfs', 'Priority', 'CFS']
 
                 # plotting a bar chart
                 plot.bar(left, height, tick_label=tick_label,

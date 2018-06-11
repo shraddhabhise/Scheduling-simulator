@@ -52,9 +52,9 @@ class Simulator:
 
         elif str(time_to_calculate).lower() == "completion":
             # Calculate the completion time for each algorithm
-            fcfs_completion_time = self.calculate_avg_completion_time(fcfs_job_list, njobs)
-            priority_completion_time = self.calculate_avg_completion_time(priority_job_list, njobs)
-            cfs_completion_time = self.calculate_avg_completion_time(cfs_job_list, njobs)
+            fcfs_completion_time = self.calculate_completion_time(fcfs_job_list, njobs)
+            priority_completion_time = self.calculate_completion_time(priority_job_list, njobs)
+            cfs_completion_time = self.calculate_completion_time(cfs_job_list, njobs)
 
             # Append each completion time in the y_axis list
             y_axis_list.append(fcfs_completion_time)
@@ -105,7 +105,7 @@ class Simulator:
         avg_wait_time = total_wait_time / no_of_jobs
         return avg_wait_time
 
-    def calculate_avg_completion_time(self, job_list, no_of_jobs):
+    def calculate_completion_time(self, job_list, no_of_jobs):
         """
         This method calculates average completion time
         for given job list
@@ -117,8 +117,8 @@ class Simulator:
         for x in range(0, len(job_list)):
             total_completion_time = total_completion_time + job_list[x].get_completion_time()
 
-        avg_completion_time = total_completion_time / no_of_jobs
-        return avg_completion_time
+        #avg_completion_time = total_completion_time / no_of_jobs
+        return total_completion_time
 
     def calculate_avg_turnaround_time(self, job_list, no_of_jobs):
         """
