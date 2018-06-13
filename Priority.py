@@ -9,7 +9,7 @@ class Priority:
    list_priority = []
    priority_throughput = 0
 
-   def sort_job(jobList):
+   def sort_job(self, jobList):
 
        """ Sort the job list based on priorities time
        :param job_list:Jobs
@@ -18,7 +18,7 @@ class Priority:
        sorted_job_list = sorted(jobList, key=lambda x: x.priority, reverse=False)
        return sorted_job_list
 
-   def convert_to_queue(sortedList):
+   def convert_to_queue(self, sortedList):
 
        """
        Convert the input list to queue
@@ -30,7 +30,7 @@ class Priority:
        return Priority.queue
 
 
-   def calculate_times(queue, num_jobs, cpu_slice):
+   def calculate_times(self, queue, num_jobs, cpu_slice):
 
        """
        This definition is responsible to run the priority scheduling algorithm and
@@ -60,7 +60,7 @@ class Priority:
                    remaining_slice = abs(job_burst)
                    completionTime = completionTime + job_burst + cpu_slice
                    cpu_slice = remaining_slice
-                   Total_completion = Total_completion + completionTime
+                   #Total_completion = Total_completion + completionTime
 
                else:                                   # if execution time is 0 or less then 0, i.e if process is complete
                    completionTime = completionTime + cpu_slice
@@ -80,20 +80,20 @@ class Priority:
            print("-----------------------------------------------------------------")
 
        # calculate total throughput
-       Priority.priority_throughput = num_jobs / Total_completion
-       print("Priority Completion time:", Total_completion)
+       Priority.priority_throughput = num_jobs / completionTime
+       print("Priority Completion time:", completionTime)
        print(" Throughput ", Priority.priority_throughput)
 
        # calculate total turnaround time
-       total_TurnarounTime = Total_completion / num_jobs
+       total_TurnarounTime = completionTime / num_jobs
        print("Average Turn around time ", total_TurnarounTime)
        print("-----------------------------------------------------------------")
        return Priority.list_priority
 
    def execute_priority(self, num_of_jobs, cpu_slice, job_List):
-       sorted_job_list = Priority.sort_job(job_List)
-       queue = Priority.convert_to_queue(sorted_job_list)
-       Priority.list_priority = Priority.calculate_times(queue, num_of_jobs, cpu_slice)
+       sorted_job_list = self.sort_job(job_List)
+       queue = self.convert_to_queue(sorted_job_list)
+       Priority.list_priority = self.calculate_times(queue, num_of_jobs, cpu_slice)
        return Priority.list_priority
 
 
