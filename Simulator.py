@@ -107,18 +107,13 @@ class Simulator:
 
     def calculate_completion_time(self, job_list, no_of_jobs):
         """
-        This method calculates average completion time
+        This method returns the total completion time
         for given job list
         :param job_list:
         :param no_of_jobs:
         :return:
         """
-        total_completion_time = 0
-        for x in range(0, len(job_list)):
-            total_completion_time = total_completion_time + job_list[x].get_completion_time()
-
-        #avg_completion_time = total_completion_time / no_of_jobs
-        return total_completion_time
+        return job_list[len(job_list) - 1].get_completion_time()
 
     def calculate_avg_turnaround_time(self, job_list, no_of_jobs):
         """
@@ -128,6 +123,7 @@ class Simulator:
         :param no_of_jobs:
         :return:
         """
+
         total_turnaround_time = 0
         for x in range(0, len(job_list)):
             total_turnaround_time = total_turnaround_time + job_list[x].get_turnaround_Time()

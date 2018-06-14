@@ -60,7 +60,7 @@ class CFS:
                     completion_time = completion_time + (temp_slice - abs(running.execution_time))
                     # running.completion_time = completion_time
 
-                    total_completion = total_completion + completion_time
+                    #total_completion = total_completion + completion_time
 
                     # set completeion time of running job
                     Job.set_completion_time(running, completion_time)
@@ -85,13 +85,13 @@ class CFS:
             if flag>0:
                 number_of_jobs = number_of_jobs - flag
 
-        print("CFS Completion time:",total_completion)
+        print("CFS Completion time:",completion_time)
 
-        CFS.cfs_throughput = num_jobs / total_completion
+        CFS.cfs_throughput = num_jobs / completion_time
         print("Throughput ", self.cfs_throughput)
 
         # calculate total turnaround time
-        total_TurnarounTime = total_completion / num_jobs
+        total_TurnarounTime = completion_time / num_jobs
 
         print("Average Turn around time ", total_TurnarounTime)
         print("-----------------------------------------------------------------")

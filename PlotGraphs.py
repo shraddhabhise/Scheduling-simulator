@@ -17,7 +17,7 @@ class PlotGraphs(object):
                 # heights of bars
                 height = waiting_time_list
 
-                print("Waiting times from PlotGraphs:")
+                print("Average Waiting times from PlotGraphs:")
                 for x in range(len(height)):
                     print("height[0]:", height[x])
 
@@ -33,7 +33,7 @@ class PlotGraphs(object):
                 # naming the y-axis
                 plot.ylabel('y - axis (Time in Seconds)')
                 # plot title
-                plot.title('Waiting Time Comparison')
+                plot.title('Average Waiting Time Comparison')
 
                 # function to show the plot
                 plot.show()
@@ -92,7 +92,7 @@ class PlotGraphs(object):
                 # naming the y-axis
                 plot.ylabel('y - axis (Time in Seconds)')
                 # plot title
-                plot.title('Turn Around Time Comparison')
+                plot.title('Average Turn Around Time Comparison')
 
                 # function to show the plot
                 plot.show()
