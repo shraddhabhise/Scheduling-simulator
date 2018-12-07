@@ -12,7 +12,7 @@ The project implements:
 
 Language Used: Python 3.6
 
-To run the project:
+# Steps to run the project:
 1. Import the downloaded source code in a suitable environment(Pycharm IDE preferred)
 2. Make sure the project is compiled successfully by downloading all the required dependencies.
 3.Before running the project, make sure that the current directory is same as project directory
@@ -21,7 +21,7 @@ To run the project:
     where n --> no of jobs
           t --> CPU time slice
           
-References:
+# References:
  
 [1] https://en.wikipedia.org/wiki/Completely_Fair_Scheduler
 
